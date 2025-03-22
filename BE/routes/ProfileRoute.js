@@ -1,0 +1,25 @@
+const express = require('express');
+const router = express.Router();
+const ProfileController = require('../controllers/ProfileController');
+const upload = require('../middleware/upload');
+
+router.post('/create/:accountId', ProfileController.createProfile);
+router.get('/get/:accountId', ProfileController.getProfile);
+router.get('/getallprofile/:accountId', ProfileController.getAllProfile);
+router.post('/getdiscovery/:accountId', ProfileController.getDiscovery);
+router.patch('/update/:accountId', ProfileController.updateProfile);
+router.post('/upload-image/:accountId', upload.array('files', 10), ProfileController.uploadProfileImages);
+router.post('/delete-image/:accountId', ProfileController.deleteProfileImage);
+router.post('/upload-video/:accountId', upload.array('video'), ProfileController.uploadProfileVideo);
+router.post('/upload-voice/:accountId', upload.array('voice'), ProfileController.uploadProfileVoice);
+router.post('/propose/:accountId', ProfileController.proposeProfile);
+router.post('/filterwholikeyou/:accountId', ProfileController.filterWhoLikeYou);
+router.post('/like/:accountId', ProfileController.likeProfile);
+router.post('/superlike/:accountId', ProfileController.superlikeProfile);
+router.post('/skip/:accountId', ProfileController.skipProfile);
+router.get('/whoyoulike/:accountId', ProfileController.getWhoYouLike);
+router.get('/wholikeyou/:accountId', ProfileController.getWhoLikeYou);
+router.get('/whoyouskip/:accountId', ProfileController.getWhoYouSkip);
+router.post('/activateSpeed/:accountId', ProfileController.actiSpeed);
+router.get('/getmatch/:accountId', ProfileController.getMatch);
+module.exports = router;

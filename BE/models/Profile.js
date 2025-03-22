@@ -1,0 +1,46 @@
+const mongoose = require('mongoose');
+
+const profileSchema = new mongoose.Schema({
+    accountId: {type: String, required: true},
+    name: {type: String , required: true},
+    avatar: {type: String,},
+    images: {type: [String], default: []},
+    gender: {type: String, required: true},
+    genderlike: {type: String, required: true},
+    birthday: {type: String, required: true},
+    findfor: {type: String, required: true},
+    priorityDistance: {type: Number, required: true},
+    university: {type: String,},
+    sexuality: {type: String, required: true},
+    habits:{type:mongoose.Schema.Types.Mixed, default: []},
+    interests:{type:[String], default: []},
+    wholikeyou:{type:mongoose.Schema.Types.Mixed, default: []},
+    whoyoulike:{type:mongoose.Schema.Types.Mixed, default: []},
+    whosuperlikeyou:{type:mongoose.Schema.Types.Mixed, default: []},
+    whoyousuperlike:{type:mongoose.Schema.Types.Mixed, default: []},
+    whoyouskip:{type:mongoose.Schema.Types.Mixed, default: []},
+    isLove:{type: Boolean, default: false},
+    weight: {type: Number, default: 0},
+    height: {type: String,},
+    voices: {type: [String], default: []},
+    videos: {type: [String], default: []},
+    location: {
+        latitude: { type: Number, required: true },
+        longitude: { type: Number, required: true }
+    },
+    profileCompletion: { type: Number},
+    verified: { type: Boolean, default: false },
+    isSpeed: { type: Boolean, default: false },
+    expireSpeed: { type: Date },
+    showGenderInProfile: { type: Boolean, default: false },
+    showSexInProfile: { type: Boolean, default: false },
+    slogen:{type: String},
+    livingAddress: {type: String,},
+    job: {type: String,},
+    company: {type: String,},
+    moreInfor:{type:mongoose.Schema.Types.Mixed},
+    introduction: {type: String,},
+    language: {type: [String],},
+});
+
+module.exports = mongoose.model('Profile', profileSchema);
