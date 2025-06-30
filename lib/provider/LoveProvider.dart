@@ -11,11 +11,8 @@ import 'package:http/http.dart' as http;
 class LoveProvider with ChangeNotifier {
   final String baseurl = utils.baseUrl;
   Love? _love;
-  List<Love> _sendLove = [];
-  List<Love> _receiveLove = [];
+  String message = '';
   Love? get love => _love;
-  List<Love>? get sendLove => _sendLove;
-  List<Love>? get recieverLove => _receiveLove;
 
   bool isLoading = false;
 
@@ -24,39 +21,32 @@ class LoveProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getLoveInfor(String myId, String candidateId) async {
+  Future<void> checkLove(String myId, String candidateId) async {
     setLoad(true);
+    _love = null;
+    message = '';
     try {
-      final response =
-          await http.get(Uri.parse('$baseurl/love/getLoveInfor/$myId'));
+      final response = await http.get(
+        Uri.parse('$baseurl/love/check-love/$myId/$candidateId'),
+      );
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        String message = data['message'];
-
-        if (message == 'success') {
-          if (candidateId == data['candidateId']) {
-            _love = Love.fromJson(data['love'] as Map<String, dynamic>);
-          } else {
-            _love = null;
-          }
-        } else if (message == 'pending') {
-          _sendLove = (data['sendLove'] as List?)
-                  ?.map((e) => Love.fromJson(e as Map<String, dynamic>))
-                  .toList() ??
-              [];
-
-          _receiveLove = (data['receiveLove'] as List?)
-                  ?.map((e) => Love.fromJson(e as Map<String, dynamic>))
-                  .toList() ??
-              [];
+        if (data['message'] == 'love' ||
+            data['message'] == 'sent' ||
+            data['message'] == 'received') {
+          message = data['message'];
+          _love = Love.fromJson(data['love'] as Map<String, dynamic>);
+        } else {
+          message = data['message'];
+          _love = null;
         }
         notifyListeners();
       } else {
         print("Lỗi API: Mã trạng thái ${response.statusCode}");
       }
     } catch (error) {
-      print("Lỗi getLoveInfor: $error");
+      print("Lỗi checkLove: $error");
     } finally {
       setLoad(false);
     }
@@ -79,11 +69,6 @@ class LoveProvider with ChangeNotifier {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         _love = Love.fromJson(data['love'] as Map<String, dynamic>);
-        if (!_sendLove
-            .any((love) => love.receiver['accountId'] == candidateId)) {
-          _sendLove.add(_love!);
-          notifyListeners();
-        }
 
         notifyListeners();
         return true;
@@ -123,18 +108,7 @@ class LoveProvider with ChangeNotifier {
               Provider.of<ProfileProvider>(context, listen: false);
           profileProvider.setLove(profile);
         } else {
-          _sendLove = _sendLove
-              .where((love) => !((love.receiver['accountId'] == candidateId &&
-                      love.sender['accountId'] == myId) ||
-                  (love.sender['accountId'] == candidateId &&
-                      love.receiver['accountId'] == myId)))
-              .toList();
-          _receiveLove = _receiveLove
-              .where((love) => !((love.receiver['accountId'] == candidateId &&
-                      love.sender['accountId'] == myId) ||
-                  (love.sender['accountId'] == candidateId &&
-                      love.receiver['accountId'] == myId)))
-              .toList();
+          print("Lỗi API cancel: ${data['message']}");
         }
         notifyListeners();
         return true;
@@ -180,9 +154,6 @@ class LoveProvider with ChangeNotifier {
               Provider.of<ProfileProvider>(context, listen: false);
           profileProvider.setLove(profile);
         }
-
-        _receiveLove.clear();
-        _sendLove.clear();
         notifyListeners();
         return true;
       } else {

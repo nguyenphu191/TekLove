@@ -171,7 +171,7 @@ class _BuySpeedPageState extends State<BuySpeedPage> {
                               builder: (context) => BuyPremiumPage()));
                     },
                     child: Container(
-                      height: 68 * pix,
+                      height: 75 * pix,
                       width: size.width - 32 * pix,
                       padding: EdgeInsets.all(14 * pix),
                       decoration: BoxDecoration(

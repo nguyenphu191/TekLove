@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_ask_me.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_audio.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_basic_info.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_intro.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_lifestyle.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_more_infor.dart';
-import 'package:tiklove_fe/pages/profile/profile_widget/edit_slogen.dart';
+
 import 'package:tiklove_fe/pages/setting/setting_acount.dart';
 import 'package:tiklove_fe/pages/setting/setting_find.dart';
 

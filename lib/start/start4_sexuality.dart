@@ -31,7 +31,7 @@ class _Start4PageState extends State<Start4Page> {
           Container(
             height: size.height,
             width: size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -48,7 +48,7 @@ class _Start4PageState extends State<Start4Page> {
             child: Container(
               height: 53 * pix,
               width: 235 * pix,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove2.png'),
                 ),
@@ -60,7 +60,7 @@ class _Start4PageState extends State<Start4Page> {
             left: 8 * pix,
             right: 8 * pix,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
@@ -68,13 +68,13 @@ class _Start4PageState extends State<Start4Page> {
                 children: [
                   SingleChildScrollView(
                     child: Container(
-                      height: 480 * pix,
+                      height: 455 * pix,
                       width: double.maxFinite,
                       margin: EdgeInsets.all(18 * pix),
                       child: Column(
                         children: [
                           Container(
-                            height: 16 * pix,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '4/12',
@@ -126,7 +126,7 @@ class _Start4PageState extends State<Start4Page> {
                               decoration: BoxDecoration(
                                 color: Color.fromARGB(255, 240, 235, 235),
                                 borderRadius: BorderRadius.circular(30),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Color(0xFFF4F4F4),
                                     offset: Offset(0, 2),
@@ -171,7 +171,7 @@ class _Start4PageState extends State<Start4Page> {
                               decoration: BoxDecoration(
                                 color: Color(0xFFFF295F),
                                 borderRadius: BorderRadius.circular(30),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Color.fromARGB(255, 250, 37, 90),
                                     offset: Offset(0, 2),

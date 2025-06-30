@@ -30,7 +30,7 @@ class OptionWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 154 * pix,
+        height: 158 * pix,
         width: 115 * pix,
         padding: EdgeInsets.all(10 * pix),
         decoration: BoxDecoration(
@@ -83,12 +83,12 @@ class OptionWidget extends StatelessWidget {
                   )
                 : Container(),
             SizedBox(
-              height: 16 * pix,
+              height: 10 * pix,
             ),
             Text(
               "${price.toInt()}đ/$unit",
               style: TextStyle(
-                fontSize: 14 * pix,
+                fontSize: 12 * pix,
                 color: Colors.black,
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:tiklove_fe/pages/discovery/discovery_page.dart';
 import 'package:tiklove_fe/pages/home/home.dart';
 import 'package:tiklove_fe/pages/like/like_page.dart';
 import 'package:tiklove_fe/pages/message/chat_page.dart';
+import 'package:tiklove_fe/pages/message/message_page.dart';
 import 'package:tiklove_fe/pages/profile/profile_page.dart';
 import 'package:tiklove_fe/res/images/app_images.dart';
 import 'package:tiklove_fe/theme/app_colors.dart';
@@ -61,12 +62,10 @@ class _LoveBottomBarState extends State<LoveBottomBar> {
                       enabled: widget.type == 1 ? true : false),
                   _buildActionButton(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => ChatPage(
-                        //               candidateId: '1',
-                        //             )));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MessagePage()));
                       },
                       image: AppImages.messfavorite,
                       enabled: widget.type == 2 ? true : false),

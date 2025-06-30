@@ -35,28 +35,34 @@ class NewMatchCard extends StatelessWidget {
             bottom: 10 * pix,
             left: 0,
             right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  match['name'],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14 * pix,
-                    fontWeight: FontWeight.bold,
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: pix * 99,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    match['name'],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12 * pix,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                match['verified']
-                    ? Image.asset(
-                        AppImages.iconVerify,
-                        height: 16 * pix,
-                        width: 16 * pix,
-                      )
-                    : Container(
-                        height: 16 * pix,
-                        width: 16 * pix,
-                      )
-              ],
+                  match['verified']
+                      ? Image.asset(
+                          AppImages.iconVerify,
+                          height: 14 * pix,
+                          width: 14 * pix,
+                        )
+                      : Container(
+                          height: 14 * pix,
+                          width: 14 * pix,
+                        )
+                ],
+              ),
             ),
           )
         ],

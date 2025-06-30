@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:tiklove_fe/models/Account.dart';
-import 'package:tiklove_fe/pages/love/sendlove/send_love_page.dart';
 import 'package:tiklove_fe/provider/AuthProvider.dart';
 import 'package:tiklove_fe/provider/MessageProvider.dart';
 import 'package:tiklove_fe/res/images/app_images.dart';

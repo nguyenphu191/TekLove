@@ -585,17 +585,29 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget _buildDetailRow(IconData icon, String text) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.grey, size: 20),
-          SizedBox(width: 8),
-          Text(
-            text,
-            style: TextStyle(fontSize: 14, color: Colors.black),
-          ),
-        ],
+      child: Container(
+        width: double.maxFinite,
+        child: Row(
+          crossAxisAlignment:
+              CrossAxisAlignment.start, // để icon và text thẳng hàng ở trên
+          children: [
+            Icon(icon, color: Colors.grey, size: 20),
+            SizedBox(width: 8),
+            Expanded(
+              // cho phép Text chiếm phần còn lại và xuống dòng
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 14 * pix, color: Colors.black),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

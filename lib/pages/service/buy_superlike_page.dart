@@ -29,7 +29,6 @@ class _BuySuperlikePageState extends State<BuySuperlikePage> {
               height: 100 * pix,
               padding: EdgeInsets.symmetric(horizontal: 20 * pix),
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
                 border: Border(
                   bottom: BorderSide(
                     color: Colors.grey,
@@ -80,7 +79,7 @@ class _BuySuperlikePageState extends State<BuySuperlikePage> {
                     ),
                   ),
                   Container(
-                    height: 56 * pix,
+                    height: 66 * pix,
                     width: size.width - 32 * pix,
                     child: Text(
                       'Siêu Thích giúp bạn nổi bật, tăng khả năng được tương hợp.',
@@ -171,7 +170,7 @@ class _BuySuperlikePageState extends State<BuySuperlikePage> {
                               builder: (context) => BuyPremiumPage()));
                     },
                     child: Container(
-                      height: 68 * pix,
+                      height: 75 * pix,
                       width: size.width - 32 * pix,
                       padding: EdgeInsets.all(14 * pix),
                       decoration: BoxDecoration(

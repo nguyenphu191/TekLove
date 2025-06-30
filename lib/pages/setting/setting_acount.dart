@@ -50,7 +50,7 @@ class _SettingAcountState extends State<SettingAcount> {
         ),
         _buildTitle('Giao diện'),
         Container(
-          height: 160 * pix,
+          height: 170 * pix,
           width: size.width,
           color: Colors.white,
           padding: EdgeInsets.all(10 * pix),
@@ -147,7 +147,7 @@ class _SettingAcountState extends State<SettingAcount> {
         ),
         _buildTitle('Dữ liệu (Autoplay video)'),
         Container(
-          height: 160 * pix,
+          height: 170 * pix,
           width: size.width,
           color: Colors.white,
           padding: EdgeInsets.all(10 * pix),
@@ -269,6 +269,7 @@ class _SettingAcountState extends State<SettingAcount> {
         Container(
           height: 88 * pix,
           width: size.width,
+          color: Colors.white,
           padding: EdgeInsets.all(16 * pix),
           child: InkWell(
             onTap: () {

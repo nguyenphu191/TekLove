@@ -28,7 +28,6 @@ class _BuyPremiumPageState extends State<BuyPremiumPage> {
               height: 100 * pix,
               padding: EdgeInsets.symmetric(horizontal: 20 * pix),
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
                 border: Border(
                   bottom: BorderSide(
                     color: Colors.grey,

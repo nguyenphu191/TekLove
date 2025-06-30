@@ -24,7 +24,7 @@ class _DiscoverySwiperPageState extends State<DiscoverySwiperPage>
   @override
   void initState() {
     super.initState();
-    title = 'DiscoverySwiperPage for ${widget.type}';
+    title = widget.type;
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       profileProvider = Provider.of<ProfileProvider>(context, listen: false);
@@ -136,7 +136,7 @@ class _DiscoverySwiperPageState extends State<DiscoverySwiperPage>
                     Container(
                       key: ValueKey(otherProfiles
                           .length), // Khởi tạo lại CardSwiper khi danh sách thay đổi
-                      height: size.height * 0.73,
+                      height: size.height * 0.7,
                       width: size.width,
                       margin: EdgeInsets.only(
                           top: 10 * pix, left: 10 * pix, right: 10 * pix),

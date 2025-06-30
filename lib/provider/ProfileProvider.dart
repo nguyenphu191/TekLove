@@ -435,7 +435,6 @@ class ProfileProvider with ChangeNotifier {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('Bỏ qua profile'),
           ));
-          Navigator.pop(context);
         } else {
           print("Lỗi: Response không chứa 'profile'");
         }

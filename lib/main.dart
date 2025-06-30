@@ -6,9 +6,7 @@ import 'package:tiklove_fe/provider/LoveProvider.dart';
 import 'package:tiklove_fe/provider/MessageProvider.dart';
 import 'package:tiklove_fe/provider/ProfileProvider.dart';
 import 'package:tiklove_fe/start/Intro.dart';
-import 'package:tiklove_fe/start/login.dart';
-import 'package:tiklove_fe/start/register.dart';
-import 'package:tiklove_fe/start/start1_name.dart';
+
 import 'package:tiklove_fe/provider/AuthProvider.dart';
 
 Future<void> main() async {

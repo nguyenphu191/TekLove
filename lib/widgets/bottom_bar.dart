@@ -30,7 +30,7 @@ class _BottomBarState extends State<BottomBar> with TickerProviderStateMixin {
           children: [
             Container(
               height: 64 * pix,
-              width: 290 * pix,
+              width: 285 * pix,
               padding: EdgeInsets.symmetric(horizontal: 8 * pix),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 0, 0, 0),

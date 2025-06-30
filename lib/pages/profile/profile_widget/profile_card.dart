@@ -280,10 +280,12 @@ class _ProfileCardState extends State<ProfileCard> {
                               child: Row(
                                 children: [
                                   Container(
-                                    height: 22 * pix,
-                                    width: 161 * pix,
+                                    height: 25 * pix,
+                                    width: 188 * pix,
                                     padding: EdgeInsets.only(
-                                        top: 2 * pix, left: 5 * pix),
+                                        top: 0 * pix,
+                                        left: 5 * pix,
+                                        right: 5 * pix),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       color: Colors.grey.withOpacity(0.5),
@@ -300,7 +302,7 @@ class _ProfileCardState extends State<ProfileCard> {
                                           'Hoàn thành ${profile.profileCompletion}% hồ sơ',
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 11 * pix,
+                                            fontSize: 12 * pix,
                                             fontFamily: 'BeVietnamPro',
                                           ),
                                         ),

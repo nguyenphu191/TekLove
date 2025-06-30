@@ -98,7 +98,7 @@ class _GenderBoxState extends State<GenderBox> {
           ),
           SizedBox(height: 15 * pix),
           Container(
-            height: 18 * pix,
+            height: 20 * pix,
             width: double.maxFinite,
             child: Row(
               children: [
@@ -146,11 +146,13 @@ class GenderOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 110,
-        width: 110,
+        height: 110 * pix,
+        width: 110 * pix,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: isSelected ? color.withOpacity(0.2) : Colors.grey[200],
@@ -162,20 +164,20 @@ class GenderOption extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 75,
-              width: 75,
-              padding: EdgeInsets.all(5),
+              height: 65 * pix,
+              width: 65 * pix,
+              padding: EdgeInsets.all(5 * pix),
               child: Image.asset(
                 icon,
                 fit: BoxFit.contain,
               ),
             ),
             Container(
-              height: 30,
+              height: 30 * pix,
               child: Text(
                 label,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14 * pix,
                   color: isSelected ? color : Colors.black,
                 ),
               ),

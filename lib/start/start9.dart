@@ -35,13 +35,15 @@ class _Start9PageState extends State<Start9Page> {
   Map<String, String> habits = {};
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -53,11 +55,11 @@ class _Start9PageState extends State<Start9Page> {
             ),
           ),
           Positioned(
-            top: 82,
-            left: 79,
+            top: 80 * pix,
+            left: 79 * pix,
             child: Container(
-              height: 53,
-              width: 235,
+              height: 53 * pix,
+              width: 235 * pix,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove2.png'),
@@ -66,10 +68,10 @@ class _Start9PageState extends State<Start9Page> {
             ),
           ),
           Positioned(
-            top: 175,
-            left: 8,
-            right: 8,
-            bottom: 15,
+            top: 175 * pix,
+            left: 8 * pix,
+            right: 8 * pix,
+            bottom: 15 * pix,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -79,18 +81,18 @@ class _Start9PageState extends State<Start9Page> {
                 child: Column(
                   children: [
                     Container(
-                      height: 510,
+                      height: 450 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Column(
                         children: [
                           Container(
-                            height: 16,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '9/12',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15 * pix,
                                 color: Colors.red,
                                 fontFamily: 'BeVietnamPro',
                               ),
@@ -98,15 +100,15 @@ class _Start9PageState extends State<Start9Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 15 * pix,
                           ),
                           Container(
-                            height: 32,
+                            height: 32 * pix,
                             width: double.maxFinite,
                             child: Text(
                               'Phong cách sống của bạn?',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 20 * pix,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'BeVietnamPro',
@@ -115,24 +117,24 @@ class _Start9PageState extends State<Start9Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5 * pix,
                           ),
                           Container(
                             width: double.maxFinite,
                             child: Text(
                               'Liệu thói quen của người ấy có giống bạn không? ',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12 * pix,
                                 fontFamily: 'BeVietnamPro',
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5 * pix,
                           ),
                           Divider(),
                           SizedBox(
-                            height: 10,
+                            height: 5 * pix,
                           ),
                           Expanded(
                             child: SingleChildScrollView(
@@ -160,7 +162,7 @@ class _Start9PageState extends State<Start9Page> {
                                       });
                                     },
                                   ),
-                                  SizedBox(height: 16),
+                                  SizedBox(height: 16 * pix),
                                   _buildQuestion(
                                     icon: Icons.smoking_rooms,
                                     question: "Bạn có hay hút thuốc không?",
@@ -180,7 +182,7 @@ class _Start9PageState extends State<Start9Page> {
                                       });
                                     },
                                   ),
-                                  SizedBox(height: 16),
+                                  SizedBox(height: 16 * pix),
                                   _buildQuestion(
                                     icon: Icons.local_drink,
                                     question: "Bạn có chơi thể thao không?",
@@ -208,9 +210,9 @@ class _Start9PageState extends State<Start9Page> {
                       ),
                     ),
                     Container(
-                      height: 60,
+                      height: 60 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,8 +223,8 @@ class _Start9PageState extends State<Start9Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color.fromARGB(255, 240, 235, 235),
                                   borderRadius: BorderRadius.circular(30),
@@ -240,7 +242,7 @@ class _Start9PageState extends State<Start9Page> {
                                     'Trước',
                                     style: TextStyle(
                                       color: Colors.black, // Màu chữ
-                                      fontSize: 17,
+                                      fontSize: 17 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),
@@ -285,8 +287,8 @@ class _Start9PageState extends State<Start9Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color(0xFFFF295F),
                                   borderRadius: BorderRadius.circular(30),
@@ -304,7 +306,7 @@ class _Start9PageState extends State<Start9Page> {
                                     'Tiếp theo',
                                     style: TextStyle(
                                       color: Colors.white, // Màu chữ
-                                      fontSize: 18,
+                                      fontSize: 18 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),

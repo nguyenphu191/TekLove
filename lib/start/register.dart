@@ -17,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _noRegistered = true;
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  bool _obscurePassword = true;
   void handleRegister(BuildContext context) async {
     await Provider.of<AuthProvider>(context, listen: false)
         .register(_phoneController.text, _passwordController.text, context);
@@ -71,13 +72,15 @@ class _RegisterPageState extends State<RegisterPage> {
   );
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -89,12 +92,12 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           Positioned(
-            top: 82,
-            left: 79,
+            top: 80 * pix,
+            left: 79 * pix,
             child: Container(
-              height: 53,
-              width: 235,
-              decoration: BoxDecoration(
+              height: 53 * pix,
+              width: 235 * pix,
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove1.png'),
                 ),
@@ -102,12 +105,12 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           Positioned(
-            top: 175,
-            left: 8,
-            right: 8,
-            bottom: 15,
+            top: 175 * pix,
+            left: 8 * pix,
+            right: 8 * pix,
+            bottom: 16 * pix,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
@@ -116,18 +119,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     ? Column(
                         children: [
                           Container(
-                            height: 210,
+                            height: 210 * pix,
                             width: double.maxFinite,
-                            margin: EdgeInsets.all(18),
+                            margin: EdgeInsets.all(16 * pix),
                             child: Column(
                               children: [
                                 Container(
-                                  height: 32,
+                                  height: 42 * pix,
                                   width: double.maxFinite,
                                   child: Text(
                                     'Đăng ký bằng SĐT',
                                     style: TextStyle(
-                                      fontSize: 24,
+                                      fontSize: 24 * pix,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'BeVietnamPro',
@@ -136,25 +139,25 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 15,
+                                  height: 15 * pix,
                                 ),
                                 Container(
-                                  height: 46,
+                                  height: 46 * pix,
                                   width: double.maxFinite,
-                                  padding: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(10 * pix),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[200],
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
                                     children: [
-                                      SizedBox(width: 12),
+                                      SizedBox(width: 12 * pix),
                                       DropdownButton<String>(
                                         value: 'VN +84',
                                         underline: SizedBox(),
-                                        icon: Icon(Icons.expand_more,
+                                        icon: const Icon(Icons.expand_more,
                                             color: Colors.grey),
-                                        items: [
+                                        items: const [
                                           DropdownMenuItem(
                                             value: 'VN +84',
                                             child: Text('VN +84'),
@@ -166,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         ],
                                         onChanged: (value) {},
                                       ),
-                                      VerticalDivider(
+                                      const VerticalDivider(
                                         color: Colors.grey,
                                         thickness: 1,
                                         indent: 12,
@@ -176,7 +179,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         child: TextField(
                                           controller: _phoneController,
                                           keyboardType: TextInputType.phone,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Nhập SĐT của bạn',
                                             hintStyle:
                                                 TextStyle(color: Colors.grey),
@@ -187,29 +190,43 @@ class _RegisterPageState extends State<RegisterPage> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 15),
+                                SizedBox(height: 15 * pix),
                                 Container(
-                                  height: 46,
+                                  height: 46 * pix,
                                   width: double.maxFinite,
-                                  padding: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(10 * pix),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[200],
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: TextField(
-                                    obscureText: true,
+                                    obscureText: _obscurePassword,
                                     controller: _passwordController,
                                     decoration: InputDecoration(
                                       hintText: 'Nhập mật khẩu',
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none,
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _obscurePassword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Colors.grey,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscurePassword =
+                                                !_obscurePassword;
+                                          });
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
                                 Text(
                                   'Chúng tôi sẽ nhắn tin cho bạn một mã code để xác thực đó đúng là bạn.',
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14 * pix,
                                     color:
                                         const Color.fromARGB(255, 90, 90, 90),
                                   ),
@@ -218,12 +235,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           SizedBox(
-                            height: 200,
+                            height: 128 * pix,
                           ),
                           Container(
-                            height: 195,
+                            height: 195 * pix,
                             width: double.maxFinite,
-                            margin: EdgeInsets.all(18),
+                            margin: EdgeInsets.all(16 * pix),
                             child: Center(
                               child: Column(
                                 children: [
@@ -232,7 +249,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       if (!checkPhone(_phoneController.text)) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          SnackBar(
+                                          const SnackBar(
                                             content: Text(
                                               'Số điện thoại không hợp lệ',
                                             ),
@@ -244,7 +261,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           _passwordController.text)) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          SnackBar(
+                                          const SnackBar(
                                             content: Text(
                                               'Mật khẩu phải có ít nhất 6 ký tự',
                                             ),
@@ -256,12 +273,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: Container(
-                                      height: 56,
+                                      height: 56 * pix,
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFFF295F),
                                         borderRadius: BorderRadius.circular(30),
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             color: Color.fromARGB(
                                                 255, 250, 37, 90),
@@ -276,25 +293,25 @@ class _RegisterPageState extends State<RegisterPage> {
                                           'Đăng ký',
                                           style: TextStyle(
                                             color: Colors.white, // Màu chữ
-                                            fontSize: 18,
+                                            fontSize: 18 * pix,
                                             fontFamily: 'BeVietnamPro',
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 15),
+                                  SizedBox(height: 15 * pix),
                                   Container(
                                     height: 20,
                                     width: double.maxFinite,
-                                    padding:
-                                        EdgeInsets.only(left: 50, right: 10),
+                                    padding: EdgeInsets.only(
+                                        left: 60 * pix, right: 10 * pix),
                                     child: Row(
                                       children: [
                                         Text(
                                           'Bạn đã có tài khoản? ',
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 14 * pix,
                                             color: const Color.fromARGB(
                                                 255, 90, 90, 90),
                                           ),
@@ -312,7 +329,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           child: Text(
                                             'Đăng nhập',
                                             style: TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 14 * pix,
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -321,27 +338,27 @@ class _RegisterPageState extends State<RegisterPage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(height: 12), // Khoảng cách
+                                  SizedBox(height: 12 * pix), // Khoảng cách
                                   Expanded(
                                     child: Container(
-                                      height: 72,
+                                      height: 72 * pix,
                                       child: RichText(
                                         textAlign: TextAlign.left,
                                         text: TextSpan(
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 14 * pix,
                                             color:
                                                 Color.fromARGB(255, 90, 90, 90),
                                             height: 1.5, // Khoảng cách dòng
                                           ),
                                           children: [
-                                            TextSpan(
+                                            const TextSpan(
                                               text:
                                                   'Khi nhấn Đăng nhập, bạn đồng ý với ',
                                             ),
                                             TextSpan(
                                               text: 'Điều khoản',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.pinkAccent,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -351,13 +368,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   print("Điều khoản được nhấn");
                                                 },
                                             ),
-                                            TextSpan(
+                                            const TextSpan(
                                               text:
                                                   ' của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong ',
                                             ),
                                             TextSpan(
                                               text: 'Chính sách quyền riêng tư',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.pinkAccent,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -368,12 +385,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                                       "Chính sách quyền riêng tư được nhấn");
                                                 },
                                             ),
-                                            TextSpan(
+                                            const TextSpan(
                                               text: ' và ',
                                             ),
                                             TextSpan(
                                               text: 'Chính sách Cookie',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.pinkAccent,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -384,7 +401,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                       "Chính sách Cookie được nhấn");
                                                 },
                                             ),
-                                            TextSpan(
+                                            const TextSpan(
                                               text: '.',
                                             ),
                                           ],
@@ -400,9 +417,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       )
                     : Column(children: [
                         Container(
-                          height: 180,
+                          height: 180 * pix,
                           width: double.maxFinite,
-                          margin: EdgeInsets.all(18),
+                          margin: EdgeInsets.all(16 * pix),
                           child: Column(
                             children: [
                               Container(

@@ -57,8 +57,8 @@ class DiscoveryCard extends StatelessWidget {
                     ? Center(
                         child: Image.asset(
                         image!,
-                        width: 120 * pix,
-                        height: 120 * pix,
+                        width: 115 * pix,
+                        height: 115 * pix,
                         fit: BoxFit.cover,
                       ))
                     : const SizedBox.shrink(),

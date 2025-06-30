@@ -122,11 +122,10 @@ exports.updateProfile = async (req, res) => {
 
         // Tính profileCompletion
         let profileCompletion = 100;
-        if (!profile.weight) profileCompletion -= 8;
         if (!profile.height) profileCompletion -= 8;
 
 
-        if (!profile.university) profileCompletion -= 8;
+        if (!profile.introduction) profileCompletion -= 8;
         if (!profile.voices || profile.voices.length === 0) profileCompletion -= 8;
         if (!profile.videos || profile.videos.length === 0) profileCompletion -= 8;
         if (!profile.university) profileCompletion -= 8;

@@ -15,7 +15,7 @@ class _FindForBoxState extends State<FindForBox> {
     final size = MediaQuery.of(context).size;
     final pix = size.width / 393;
     return Container(
-      height: 449 * pix,
+      height: 410 * pix,
       width: double.maxFinite,
       child: Column(
         children: [

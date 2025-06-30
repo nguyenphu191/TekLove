@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  bool isLove = false;
   final CardSwiperController controller = CardSwiperController();
 
   @override
@@ -72,33 +71,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 32,
                           ),
                           SizedBox(width: 10 * pix),
-                          _buildTopBarButton(
-                            label: "Tìm kiếm",
-                            icon: Icons.search,
-                            color:
-                                isLove ? Colors.grey[300]! : AppColors.primary,
-                            textColor:
-                                isLove ? Colors.grey[600]! : Colors.white,
-                            onTap: () {
-                              setState(() {
-                                isLove = !isLove;
-                              });
-                            },
-                          ),
-                          SizedBox(width: 10 * pix),
-                          _buildTopBarButton(
-                            label: "Hẹn hò",
-                            icon: Icons.favorite_border_outlined,
-                            color:
-                                isLove ? AppColors.primary : Colors.grey[300]!,
-                            textColor:
-                                isLove ? Colors.white : Colors.grey[600]!,
-                            onTap: () {
-                              setState(() {
-                                isLove = !isLove;
-                              });
-                            },
-                          ),
+                          myprofile!.isLove
+                              ? _buildTopBarButton(
+                                  label: "Chế độ Hẹn hò",
+                                  icon: Icons.favorite_border_outlined,
+                                  color: AppColors.primary,
+                                  textColor: Colors.white,
+                                  onTap: () {},
+                                )
+                              : _buildTopBarButton(
+                                  label: "Chế độ Tìm kiếm",
+                                  icon: Icons.search,
+                                  color: AppColors.primary,
+                                  textColor: Colors.white,
+                                  onTap: () {},
+                                )
                         ],
                       ),
                       Row(
@@ -143,7 +130,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-                myprofile!.isLove
+                myprofile.isLove
                     ? LoveCard()
                     : Consumer<ProfileProvider>(
                         builder: (context, profileProvider, child) {
@@ -161,7 +148,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           return Container(
                             key: ValueKey(otherProfiles
                                 .length), // Khởi tạo lại CardSwiper khi danh sách thay đổi
-                            height: size.height * 0.73,
+                            height: size.height * 0.7,
                             width: size.width,
                             margin: EdgeInsets.only(
                                 top: 10 * pix, left: 10 * pix, right: 10 * pix),
@@ -293,7 +280,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             bottom: 16 * pix,
             left: 0,
             right: 0,
-            child: isLove
+            child: myprofile.isLove
                 ? LoveBottomBar(type: 1)
                 : BottomBar(
                     type: 1,

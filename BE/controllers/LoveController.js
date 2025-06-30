@@ -153,6 +153,36 @@ exports.delete = async (req, res) => {
     }
 };
 
+exports.checkLove = async (req, res) => {
+    try {
+        const { userId, candidateId } = req.params;
+
+        const love = await Love.findOne({
+            $and: [
+                { $or: [{ "sender.accountId": userId }, { "receiver.accountId": userId }] },
+                { status: 'success' }
+            ]
+        });
+
+        if (love) {
+            return res.status(200).json({ message: 'love', love: love });
+        }
+        // Nếu không tìm thấy yêu thích, kiểm tra xem đã gửi yêu thích chưa
+        const sentLove = await Love.findOne({ "sender.accountId": userId, "receiver.accountId": candidateId });
+        if (sentLove) {
+            return res.status(200).json({ message: 'sent', love: sentLove });
+        }
+        const receivedLove = await Love.findOne({ "sender.accountId": candidateId, "receiver.accountId": userId });
+        if (receivedLove) {
+            return res.status(200).json({ message: 'received', love: receivedLove });
+        }
+        // Nếu không tìm thấy yêu thích nào, trả về trạng thái 'none'
+        return res.status(200).json({ message: 'none' });
+    } catch (err) {
+        console.error("Lỗi khi kiểm tra yêu thích:", err);
+        res.status(500).json({ message: 'Lỗi khi kiểm tra yêu thích', error: err.message });
+    }
+}
 exports.attend = async (req, res) => {
     try{
         const userId = req.params.userId;
