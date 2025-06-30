@@ -106,12 +106,12 @@ class _InterestingBoxState extends State<InterestingBox> {
     final size = MediaQuery.of(context).size;
     final pix = size.width / 393;
     return Container(
-      height: 448 * pix,
+      height: 420 * pix,
       width: double.maxFinite,
       child: Column(
         children: [
           Container(
-            height: 52 * pix,
+            height: 62 * pix,
             width: double.maxFinite,
             child: Text(
               'Bạn thích điều gì?(Có thể chọn nhiều)',

@@ -25,13 +25,15 @@ class _Start5PageState extends State<Start5Page> {
   String selectedGenderLike = "Nam";
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -43,12 +45,12 @@ class _Start5PageState extends State<Start5Page> {
             ),
           ),
           Positioned(
-            top: 82,
-            left: 79,
+            top: 80 * pix,
+            left: 79 * pix,
             child: Container(
-              height: 53,
-              width: 235,
-              decoration: BoxDecoration(
+              height: 53 * pix,
+              width: 235 * pix,
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove2.png'),
                 ),
@@ -56,12 +58,12 @@ class _Start5PageState extends State<Start5Page> {
             ),
           ),
           Positioned(
-            top: 175,
-            left: 8,
-            right: 8,
-            bottom: 15,
+            top: 175 * pix,
+            left: 8 * pix,
+            right: 8 * pix,
+            bottom: 16 * pix,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
@@ -69,18 +71,18 @@ class _Start5PageState extends State<Start5Page> {
                 child: Column(
                   children: [
                     Container(
-                      height: 260,
+                      height: 280 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Column(
                         children: [
                           Container(
-                            height: 16,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '5/12',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15 * pix,
                                 color: Colors.red,
                                 fontFamily: 'BeVietnamPro',
                               ),
@@ -88,15 +90,15 @@ class _Start5PageState extends State<Start5Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 15 * pix,
                           ),
                           Container(
-                            height: 32,
+                            height: 32 * pix,
                             width: double.maxFinite,
                             child: Text(
                               'Bạn muốn thấy ai?',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 20 * pix,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'BeVietnamPro',
@@ -105,10 +107,10 @@ class _Start5PageState extends State<Start5Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 15 * pix,
                           ),
                           Container(
-                            height: 110,
+                            height: 110 * pix,
                             width: double.maxFinite,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,12 +155,12 @@ class _Start5PageState extends State<Start5Page> {
                       ),
                     ),
                     SizedBox(
-                      height: 250,
+                      height: 168 * pix,
                     ),
                     Container(
-                      height: 60,
+                      height: 60 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,12 +171,12 @@ class _Start5PageState extends State<Start5Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color.fromARGB(255, 240, 235, 235),
                                   borderRadius: BorderRadius.circular(30),
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       color: Color(0xFFF4F4F4),
                                       offset: Offset(0, 2),
@@ -188,7 +190,7 @@ class _Start5PageState extends State<Start5Page> {
                                     'Trước',
                                     style: TextStyle(
                                       color: Colors.black, // Màu chữ
-                                      fontSize: 17,
+                                      fontSize: 17 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),
@@ -215,12 +217,12 @@ class _Start5PageState extends State<Start5Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color(0xFFFF295F),
                                   borderRadius: BorderRadius.circular(30),
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       color: Color.fromARGB(255, 250, 37, 90),
                                       offset: Offset(0, 2),
@@ -234,7 +236,7 @@ class _Start5PageState extends State<Start5Page> {
                                     'Tiếp theo',
                                     style: TextStyle(
                                       color: Colors.white, // Màu chữ
-                                      fontSize: 18,
+                                      fontSize: 18 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),
@@ -273,36 +275,38 @@ class GenderOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 110,
-        width: 110,
+        height: 110 * pix,
+        width: 110 * pix,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: isSelected ? color.withOpacity(0.2) : Colors.grey[200],
           border: isSelected
               ? Border.all(color: color, width: 2)
               : Border.all(color: Colors.transparent),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10 * pix),
         ),
         child: Column(
           children: [
             Container(
-              height: 75,
-              width: 75,
-              padding: EdgeInsets.all(5),
+              height: 65 * pix,
+              width: 65 * pix,
+              padding: EdgeInsets.all(5 * pix),
               child: Image.asset(
                 icon,
                 fit: BoxFit.contain,
               ),
             ),
             Container(
-              height: 30,
+              height: 30 * pix,
               child: Text(
                 label,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14 * pix,
                   color: isSelected ? color : Colors.black,
                 ),
               ),

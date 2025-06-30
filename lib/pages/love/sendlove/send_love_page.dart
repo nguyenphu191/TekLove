@@ -99,24 +99,9 @@ class _SendLovePageState extends State<SendLovePage> {
     final myprofile = profileProvider.profile;
     final size = MediaQuery.of(context).size;
     final pix = size.width / 393;
+    final loveProvider = Provider.of<LoveProvider>(context, listen: false);
+    final mess = loveProvider.message;
     return Consumer<LoveProvider>(builder: (context, loveProvider, child) {
-      final love = loveProvider.love;
-      final sendLove = loveProvider.sendLove;
-      final recieverLove = loveProvider.recieverLove;
-      bool issend = false;
-      bool myreceive = false;
-      if (love != null &&
-          recieverLove!.any((love) =>
-              love.sender['accountId'] == widget.candidate.accountId)) {
-        myreceive = true;
-      } else {
-        if (love != null &&
-            sendLove!.any((love) =>
-                love.receiver['accountId'] == widget.candidate.accountId)) {
-          issend = true;
-        }
-      }
-
       if (loveProvider.isLoading) {
         return Center(
           child: CircularProgressIndicator(),
@@ -183,49 +168,52 @@ class _SendLovePageState extends State<SendLovePage> {
                   ),
                 ),
                 Container(
-                  height: 72 * pix,
-                  width: size.width,
-                  padding: EdgeInsets.only(
-                      left: 16 * pix, right: 16 * pix, top: 16 * pix),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: (love != null && love!.status == "success")
-                      ? Text(
-                          'Chúc mừng! Bạn và ${widget.candidate.name} đã trở thành một cặp đôi!',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primary,
-                          ),
-                        )
-                      : !myreceive
-                          ? issend
-                              ? Text(
-                                  'Bạn đã gửi yêu cầu đến ${widget.candidate.name}, hãy chờ hồi đáp nhé!',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primary,
-                                  ),
-                                )
-                              : Text(
-                                  'Ngỏ ý hẹn hò với ${widget.candidate.name} và chờ hồi đáp thôi nào! Chúc bạn may mắn!',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primary,
-                                  ),
-                                )
-                          : Text(
-                              '${widget.candidate.name} đã gửi yêu cầu hẹn hò đến bạn, hãy phản hồi sớm nhé!',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primary,
-                              ),
+                    height: 88 * pix,
+                    width: size.width,
+                    padding: EdgeInsets.only(
+                        left: 16 * pix, right: 16 * pix, top: 16 * pix),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: (mess == "love")
+                        ? Text(
+                            'Chúc mừng! Bạn và ${widget.candidate.name} đã trở thành một cặp đôi!',
+                            style: TextStyle(
+                              fontSize: 20 * pix,
+                              fontFamily: 'BeVietnamPro',
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primary,
                             ),
-                ),
+                          )
+                        : mess == "sent"
+                            ? Text(
+                                'Bạn đã gửi yêu cầu đến ${widget.candidate.name}, hãy chờ hồi đáp nhé!',
+                                style: TextStyle(
+                                  fontSize: 20 * pix,
+                                  fontFamily: 'BeVietnamPro',
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primary,
+                                ),
+                              )
+                            : mess == "received"
+                                ? Text(
+                                    '${widget.candidate.name} đã gửi yêu cầu hẹn hò đến bạn, hãy phản hồi sớm nhé!',
+                                    style: TextStyle(
+                                      fontSize: 20 * pix,
+                                      fontFamily: 'BeVietnamPro',
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.primary,
+                                    ),
+                                  )
+                                : Text(
+                                    'Ngỏ ý hẹn hò với ${widget.candidate.name} và chờ hồi đáp thôi nào! Chúc bạn may mắn!',
+                                    style: TextStyle(
+                                      fontSize: 20 * pix,
+                                      fontFamily: 'BeVietnamPro',
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.primary,
+                                    ),
+                                  )),
                 Container(
                   height: 208 * pix,
                   width: size.width,
@@ -259,7 +247,7 @@ class _SendLovePageState extends State<SendLovePage> {
                             Text(
                               'Chuyển đổi sang chế độ tập trung hẹn hò',
                               style: TextStyle(
-                                fontSize: 14 * pix,
+                                fontSize: 13 * pix,
                                 fontFamily: 'BeVietnamPro',
                               ),
                             ),
@@ -278,7 +266,7 @@ class _SendLovePageState extends State<SendLovePage> {
                             Text(
                               'Cải tiến giao diện nhắn tin',
                               style: TextStyle(
-                                fontSize: 14 * pix,
+                                fontSize: 13 * pix,
                                 fontFamily: 'BeVietnamPro',
                               ),
                             ),
@@ -297,7 +285,7 @@ class _SendLovePageState extends State<SendLovePage> {
                             Text(
                               'Bộ đếm thời gian hẹn hò',
                               style: TextStyle(
-                                fontSize: 14 * pix,
+                                fontSize: 13 * pix,
                                 fontFamily: 'BeVietnamPro',
                               ),
                             ),
@@ -316,7 +304,7 @@ class _SendLovePageState extends State<SendLovePage> {
                             Text(
                               'Phần quà dành cho cặp đôi',
                               style: TextStyle(
-                                fontSize: 14 * pix,
+                                fontSize: 13 * pix,
                                 fontFamily: 'BeVietnamPro',
                               ),
                             ),
@@ -335,26 +323,26 @@ class _SendLovePageState extends State<SendLovePage> {
                     color: Colors.white,
                   ),
                   child: Text(
-                    !myreceive
-                        ? 'Sau khi hẹn hò, hai người không thể truy cập chế độ tìm kiếm người tương hợp. Mọi thông tin của 2 bạn sẽ được ẩn khỏi những người khác.Để quay về chế độ tìm kiếm, một trong hai người cần hủy bỏ chế độ hẹn hò.'
-                        : '${widget.candidate.name} đã gửi yêu cầu hẹn hò đến bạn, hãy phản hồi sớm nhé!',
+                    'Sau khi hẹn hò, hai người không thể truy cập chế độ tìm kiếm người tương hợp. Mọi thông tin của 2 bạn sẽ được ẩn khỏi những người khác.Để quay về chế độ tìm kiếm, một trong hai người cần hủy bỏ chế độ hẹn hò.',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12 * pix,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'BeVietnamPro',
                     ),
                   ),
                 ),
                 Divider(
-                  height: 1,
+                  height: 1 * pix,
                   color: Colors.grey,
                 ),
               ],
             ),
             Positioned(
-              bottom: 16,
-              left: 68,
-              right: 68,
-              child: (love != null && love!.status == 'success')
+              bottom: 16 * pix,
+              left: 20 * pix,
+              right: 20 * pix,
+              child: mess == "love"
                   ? InkWell(
                       onTap: () {
                         _cancel(context, myprofile.accountId,
@@ -362,9 +350,9 @@ class _SendLovePageState extends State<SendLovePage> {
                       },
                       child: Container(
                         height: 56 * pix,
-                        width: 280 * pix,
                         padding: EdgeInsets.only(
-                            left: 48 * pix, top: 16 * pix, right: 16 * pix),
+                          left: 92 * pix,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.grey[400],
                           borderRadius: BorderRadius.circular(50),
@@ -377,40 +365,42 @@ class _SendLovePageState extends State<SendLovePage> {
                             ),
                           ],
                         ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 24 * pix,
-                              width: 24 * pix,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(50),
+                        child: Center(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 24 * pix,
+                                width: 24 * pix,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Icon(
+                                  Icons.heart_broken,
+                                  size: 18 * pix,
+                                  color: AppColors.primary,
+                                ),
                               ),
-                              child: Icon(
-                                Icons.heart_broken,
-                                size: 18 * pix,
-                                color: AppColors.primary,
+                              SizedBox(width: 16 * pix),
+                              Text(
+                                'Hủy hẹn hò',
+                                style: TextStyle(
+                                  fontSize: 16 * pix,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  fontFamily: 'BeVietnamPro',
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 16 * pix),
-                            Text(
-                              'Hủy hẹn hò',
-                              style: TextStyle(
-                                fontSize: 16 * pix,
-                                fontWeight: FontWeight.bold,
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                fontFamily: 'BeVietnamPro',
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     )
-                  : myreceive
+                  : mess == "received"
                       ? Container(
                           height: 56 * pix,
-                          width: 361 * pix,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -476,64 +466,9 @@ class _SendLovePageState extends State<SendLovePage> {
                             ],
                           ),
                         )
-                      : !issend
-                          ? InkWell(
-                              onTap: () {
-                                _send(context, myprofile.accountId,
-                                    widget.candidate.accountId);
-                              },
-                              child: Container(
-                                height: 56 * pix,
-                                width: 361 * pix,
-                                padding: EdgeInsets.only(
-                                    left: 48 * pix,
-                                    top: 16 * pix,
-                                    right: 16 * pix),
-                                decoration: BoxDecoration(
-                                  color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: AppColors.primary.withOpacity(0.5),
-                                      offset: Offset(0, 3),
-                                      blurRadius: 10,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 24 * pix,
-                                      width: 24 * pix,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        size: 18 * pix,
-                                        color: AppColors.primary,
-                                      ),
-                                    ),
-                                    SizedBox(width: 16 * pix),
-                                    Text(
-                                      'Gửi yêu cầu hẹn hò',
-                                      style: TextStyle(
-                                        fontSize: 16 * pix,
-                                        fontWeight: FontWeight.bold,
-                                        color: const Color.fromARGB(
-                                            255, 255, 255, 255),
-                                        fontFamily: 'BeVietnamPro',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          : Container(
+                      : mess == "sent"
+                          ? Container(
                               height: 56 * pix,
-                              width: 361 * pix,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -595,6 +530,62 @@ class _SendLovePageState extends State<SendLovePage> {
                                     ),
                                   ),
                                 ],
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () {
+                                _send(context, myprofile.accountId,
+                                    widget.candidate.accountId);
+                              },
+                              child: Container(
+                                height: 56 * pix,
+                                padding: EdgeInsets.only(
+                                  left: 75 * pix,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary,
+                                  borderRadius: BorderRadius.circular(50),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.primary.withOpacity(0.5),
+                                      offset: Offset(0, 3),
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 24 * pix,
+                                        width: 24 * pix,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                        ),
+                                        child: Icon(
+                                          Icons.favorite,
+                                          size: 18 * pix,
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                      SizedBox(width: 16 * pix),
+                                      Text(
+                                        'Gửi yêu cầu hẹn hò',
+                                        style: TextStyle(
+                                          fontSize: 16 * pix,
+                                          fontWeight: FontWeight.bold,
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontFamily: 'BeVietnamPro',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
             ),

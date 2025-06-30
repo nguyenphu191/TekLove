@@ -1,10 +1,8 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:tiklove_fe/pages/love/love/love_setting_page.dart';
 import 'package:tiklove_fe/pages/love/love/love_widget/heart_date.dart';
 import 'package:tiklove_fe/pages/love/love/post_page.dart';
 import 'package:tiklove_fe/pages/love/love/reward_page.dart';
-import 'package:tiklove_fe/pages/message/chat_page.dart';
 import 'package:tiklove_fe/res/images/app_images.dart';
 import 'package:tiklove_fe/theme/app_colors.dart';
 

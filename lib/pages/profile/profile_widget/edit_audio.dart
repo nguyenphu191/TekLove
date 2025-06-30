@@ -82,7 +82,7 @@ class _EditAudioState extends State<EditAudio> {
       return Column(
         children: [
           Container(
-            height: 240 * pix,
+            height: 242 * pix,
             width: size.width,
             padding: EdgeInsets.all(16 * pix),
             decoration: BoxDecoration(
@@ -222,7 +222,7 @@ class _EditAudioState extends State<EditAudio> {
                 ),
                 SizedBox(height: 8 * pix),
                 Container(
-                  height: 65 * pix,
+                  height: 70 * pix,
                   width: size.width - 32 * pix,
                   child: Row(
                     children: [
@@ -245,7 +245,7 @@ class _EditAudioState extends State<EditAudio> {
                       ),
                       SizedBox(width: 10 * pix),
                       Container(
-                        height: 65 * pix,
+                        height: 70 * pix,
                         width: size.width - 72 * pix,
                         padding: EdgeInsets.only(top: 10 * pix),
                         child: Column(
@@ -262,18 +262,16 @@ class _EditAudioState extends State<EditAudio> {
                                 textAlign: TextAlign.left,
                               ),
                             ),
-                            Expanded(
-                              child: Container(
-                                height: 34 * pix,
-                                width: size.width - 72 * pix,
-                                child: Text(
-                                  'Tự động chạy đoạn thoại khi có người xem đến hồ sơ của bạn.',
-                                  style: TextStyle(
-                                      fontSize: 12 * pix,
-                                      fontFamily: 'BeVietnamPro'),
-                                  textAlign: TextAlign.left,
-                                  maxLines: 2,
-                                ),
+                            Container(
+                              height: 40 * pix,
+                              width: size.width - 72 * pix,
+                              child: Text(
+                                'Tự động chạy đoạn thoại khi có người xem đến hồ sơ của bạn.',
+                                style: TextStyle(
+                                    fontSize: 12 * pix,
+                                    fontFamily: 'BeVietnamPro'),
+                                textAlign: TextAlign.left,
+                                maxLines: 2,
                               ),
                             ),
                           ],

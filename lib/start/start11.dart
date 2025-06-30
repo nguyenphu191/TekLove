@@ -93,7 +93,7 @@ class _Start11PageState extends State<Start11Page> {
             ),
           ),
           Positioned(
-            top: 82 * pix,
+            top: 80 * pix,
             left: 79 * pix,
             child: Container(
               height: 53 * pix,
@@ -119,13 +119,13 @@ class _Start11PageState extends State<Start11Page> {
                 child: Column(
                   children: [
                     Container(
-                      height: 480 * pix,
+                      height: 455 * pix,
                       width: double.maxFinite,
                       margin: EdgeInsets.all(18 * pix),
                       child: Column(
                         children: [
                           Container(
-                            height: 16 * pix,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '11/12',

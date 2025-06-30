@@ -374,7 +374,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
             color: Colors.transparent,
             child: Container(
               width: size.width, // Full chiều rộng
-              height: 520 * pix,
+              height: 550 * pix,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(

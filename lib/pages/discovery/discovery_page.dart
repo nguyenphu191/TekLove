@@ -86,8 +86,8 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                                           type: "Love")));
                                         },
                                         child: Container(
-                                          width: width - 32,
-                                          height: 258 * pix,
+                                          width: width - 32 * pix,
+                                          height: 246 * pix,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(16),
@@ -184,7 +184,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                 runSpacing: 8 * pix,
                                 children: [
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -207,7 +207,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                      width: (width - 40 * pix) / 2,
+                                      width: (width - 50 * pix) / 2,
                                       gradient: const RadialGradient(
                                         radius: 0.8,
                                         center: Alignment(0.2081, 0.1443),
@@ -229,7 +229,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                                         type: "NoBinding")));
                                       }),
                                   DiscoveryCard(
-                                      width: (width - 40 * pix) / 2,
+                                      width: (width - 50 * pix) / 2,
                                       gradient: const RadialGradient(
                                         radius: 0.8,
                                         center: Alignment(0.2081, 0.1443),
@@ -251,7 +251,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                                         type: "Friend")));
                                       }),
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -289,7 +289,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                 runSpacing: 8,
                                 children: [
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -312,7 +312,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       center: Alignment(-0.4, -0.7),
                                       radius: 1.5,
@@ -335,7 +335,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -358,7 +358,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -381,7 +381,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                    width: (width - 40 * pix) / 2,
+                                    width: (width - 50 * pix) / 2,
                                     gradient: const RadialGradient(
                                       center: Alignment(-0.6, -0.7),
                                       radius: 1.5,
@@ -404,7 +404,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                                     },
                                   ),
                                   DiscoveryCard(
-                                    width: (width - 40) / 2,
+                                    width: (width - 50) / 2,
                                     gradient: const RadialGradient(
                                       radius: 0.8,
                                       center: Alignment(0.2081, 0.1443),
@@ -437,7 +437,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                       ],
                     ),
                   ),
-            Positioned(
+            const Positioned(
               bottom: 16,
               left: 0,
               right: 0,

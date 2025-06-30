@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tiklove_fe/pages/home/home.dart';
 import 'package:tiklove_fe/provider/AuthProvider.dart';
 import 'package:tiklove_fe/provider/LoadingProvider.dart';
 import 'package:tiklove_fe/provider/ProfileProvider.dart';
@@ -17,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  bool _obscurePassword = true;
   @override
   void initState() {
     super.initState();
@@ -63,13 +63,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final loading = Provider.of<LoadingProvider>(context).isLoading;
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -81,11 +83,11 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Positioned(
-            top: 82,
-            left: 79,
+            top: 80 * pix,
+            left: 79 * pix,
             child: Container(
-              height: 53,
-              width: 235,
+              height: 53 * pix,
+              width: 235 * pix,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove1.png'),
@@ -96,10 +98,10 @@ class _LoginPageState extends State<LoginPage> {
           loading
               ? Center(child: CircularProgressIndicator())
               : Positioned(
-                  top: 175,
-                  left: 8,
-                  right: 8,
-                  bottom: 15,
+                  top: 175 * pix,
+                  left: 8 * pix,
+                  right: 8 * pix,
+                  bottom: 15 * pix,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -109,18 +111,18 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         children: [
                           Container(
-                            height: 210,
+                            height: 220 * pix,
                             width: double.maxFinite,
                             margin: EdgeInsets.all(18),
                             child: Column(
                               children: [
                                 Container(
-                                  height: 32,
+                                  height: 42 * pix,
                                   width: double.maxFinite,
                                   child: Text(
                                     'Đăng nhập bằng SĐT',
                                     style: TextStyle(
-                                      fontSize: 24,
+                                      fontSize: 24 * pix,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'BeVietnamPro',
@@ -129,12 +131,12 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 15,
+                                  height: 15 * pix,
                                 ),
                                 Container(
-                                  height: 46,
+                                  height: 46 * pix,
                                   width: double.maxFinite,
-                                  padding: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(10 * pix),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[200],
                                     borderRadius: BorderRadius.circular(8),
@@ -182,20 +184,34 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 SizedBox(height: 15),
                                 Container(
-                                  height: 46,
+                                  height: 46 * pix,
                                   width: double.maxFinite,
-                                  padding: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(10 * pix),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[200],
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: TextField(
-                                    obscureText: true,
+                                    obscureText: _obscurePassword,
                                     controller: _passwordController,
                                     decoration: InputDecoration(
                                       hintText: 'Nhập mật khẩu',
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none,
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _obscurePassword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Colors.grey,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscurePassword =
+                                                !_obscurePassword;
+                                          });
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -204,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Text(
                                       'Chúc bạn sẽ tìm được một nửa của cuộc đời mình',
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 12 * pix,
                                         color: const Color.fromARGB(
                                             255, 90, 90, 90),
                                       ),
@@ -219,12 +235,12 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(
-                            height: 200,
+                            height: 120 * pix,
                           ),
                           Container(
-                            height: 195,
+                            height: 210 * pix,
                             width: double.maxFinite,
-                            margin: EdgeInsets.all(18),
+                            margin: EdgeInsets.all(16 * pix),
                             child: Center(
                               child: Column(
                                 children: [
@@ -234,7 +250,7 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: Container(
-                                      height: 56,
+                                      height: 56 * pix,
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFFF295F),
@@ -254,25 +270,25 @@ class _LoginPageState extends State<LoginPage> {
                                           'Đăng nhập',
                                           style: TextStyle(
                                             color: Colors.white, // Màu chữ
-                                            fontSize: 18,
+                                            fontSize: 18 * pix,
                                             fontFamily: 'BeVietnamPro',
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 15),
+                                  SizedBox(height: 15 * pix),
                                   Container(
-                                    height: 20,
+                                    height: 20 * pix,
                                     width: double.maxFinite,
-                                    padding:
-                                        EdgeInsets.only(left: 50, right: 10),
+                                    padding: EdgeInsets.only(
+                                        left: 60 * pix, right: 10 * pix),
                                     child: Row(
                                       children: [
                                         Text(
                                           'Bạn chưa có tài khoản? ',
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 14 * pix,
                                             color: const Color.fromARGB(
                                                 255, 90, 90, 90),
                                           ),
@@ -290,7 +306,7 @@ class _LoginPageState extends State<LoginPage> {
                                           child: Text(
                                             'Đăng ký',
                                             style: TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 14 * pix,
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -299,15 +315,15 @@ class _LoginPageState extends State<LoginPage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(height: 12), // Khoảng cách
+                                  SizedBox(height: 12 * pix), // Khoảng cách
                                   Expanded(
                                     child: Container(
-                                      height: 72,
+                                      height: 72 * pix,
                                       child: RichText(
                                         textAlign: TextAlign.left,
                                         text: TextSpan(
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 14 * pix,
                                             color:
                                                 Color.fromARGB(255, 90, 90, 90),
                                             height: 1.5, // Khoảng cách dòng

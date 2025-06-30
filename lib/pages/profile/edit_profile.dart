@@ -205,9 +205,13 @@ class _EditProfileState extends State<EditProfile> {
                       height: 8 * pix,
                     ),
                     Container(
-                      height: 415 * pix,
+                      height: 380 * pix,
                       width: double.maxFinite,
-                      padding: EdgeInsets.only(left: 8 * pix, right: 8 * pix),
+                      padding: EdgeInsets.only(
+                          left: 28 * pix,
+                          right: 28 * pix,
+                          top: 8 * pix,
+                          bottom: 8 * pix),
                       child: GridView.builder(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(

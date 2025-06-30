@@ -74,7 +74,7 @@ class _EditSlogenState extends State<EditSlogen> {
         child: Column(
           children: [
             Container(
-              height: 18 * pix,
+              height: 20 * pix,
               width: size.width - 32 * pix,
               child: Text(
                 'Câu gợi ý',
@@ -171,7 +171,7 @@ class _EditSlogenState extends State<EditSlogen> {
               child: Container(
                 height: 48 * pix,
                 width: size.width - 32 * pix,
-                padding: EdgeInsets.only(left: 50 * pix, right: 8 * pix),
+                padding: EdgeInsets.only(left: 40 * pix, right: 8 * pix),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(50),
@@ -214,7 +214,7 @@ class _EditSlogenState extends State<EditSlogen> {
       child: Container(
         height: 58 * pix,
         width: width - 32 * pix,
-        padding: EdgeInsets.all(8 * pix),
+        padding: EdgeInsets.all(6 * pix),
         margin: EdgeInsets.only(bottom: 5 * pix),
         decoration: BoxDecoration(
             color: Color.fromARGB(255, 255, 212, 222).withOpacity(0.8),

@@ -31,13 +31,15 @@ class _Start8PageState extends State<Start8Page> {
   String university = '';
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 393;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -49,11 +51,11 @@ class _Start8PageState extends State<Start8Page> {
             ),
           ),
           Positioned(
-            top: 82,
-            left: 79,
+            top: 80 * pix,
+            left: 79 * pix,
             child: Container(
-              height: 53,
-              width: 235,
+              height: 53 * pix,
+              width: 235 * pix,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Teklove/teklove2.png'),
@@ -62,10 +64,10 @@ class _Start8PageState extends State<Start8Page> {
             ),
           ),
           Positioned(
-            top: 175,
-            left: 8,
-            right: 8,
-            bottom: 15,
+            top: 175 * pix,
+            left: 8 * pix,
+            right: 8 * pix,
+            bottom: 15 * pix,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -75,18 +77,18 @@ class _Start8PageState extends State<Start8Page> {
                 child: Column(
                   children: [
                     Container(
-                      height: 250,
+                      height: 250 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Column(
                         children: [
                           Container(
-                            height: 16,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '8/12',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15 * pix,
                                 color: Colors.red,
                                 fontFamily: 'BeVietnamPro',
                               ),
@@ -94,15 +96,15 @@ class _Start8PageState extends State<Start8Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 15 * pix,
                           ),
                           Container(
-                            height: 32,
+                            height: 32 * pix,
                             width: double.maxFinite,
                             child: Text(
                               'Thêm trường học của bạn?',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 20 * pix,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'BeVietnamPro',
@@ -111,7 +113,7 @@ class _Start8PageState extends State<Start8Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 10 * pix,
                           ),
                           Container(
                             width: double.maxFinite,
@@ -139,7 +141,7 @@ class _Start8PageState extends State<Start8Page> {
                               child: Text(
                                 'Bỏ qua',
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 15 * pix,
                                   fontFamily: 'BeVietnamPro',
                                   color: Color(0xFFFF295F),
                                   fontWeight: FontWeight.bold,
@@ -148,10 +150,10 @@ class _Start8PageState extends State<Start8Page> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 15 * pix,
                           ),
                           Container(
-                            height: 46,
+                            height: 46 * pix,
                             width: double.maxFinite,
                             padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
@@ -162,7 +164,7 @@ class _Start8PageState extends State<Start8Page> {
                               onChanged: (value) {
                                 university = value;
                               },
-                              keyboardType: TextInputType.phone,
+                              keyboardType: TextInputType.streetAddress,
                               decoration: InputDecoration(
                                 hintText: 'Nhập tên trường đã hoặc đang học',
                                 hintStyle: TextStyle(color: Colors.grey),
@@ -174,12 +176,12 @@ class _Start8PageState extends State<Start8Page> {
                       ),
                     ),
                     SizedBox(
-                      height: 260,
+                      height: 200 * pix,
                     ),
                     Container(
-                      height: 60,
+                      height: 60 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18),
+                      margin: EdgeInsets.all(16 * pix),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,8 +192,8 @@ class _Start8PageState extends State<Start8Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color.fromARGB(255, 240, 235, 235),
                                   borderRadius: BorderRadius.circular(30),
@@ -209,7 +211,7 @@ class _Start8PageState extends State<Start8Page> {
                                     'Trước',
                                     style: TextStyle(
                                       color: Colors.black, // Màu chữ
-                                      fontSize: 17,
+                                      fontSize: 17 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),
@@ -248,8 +250,8 @@ class _Start8PageState extends State<Start8Page> {
                               },
                               borderRadius: BorderRadius.circular(30),
                               child: Container(
-                                height: 56,
-                                width: 164,
+                                height: 56 * pix,
+                                width: 164 * pix,
                                 decoration: BoxDecoration(
                                   color: Color(0xFFFF295F),
                                   borderRadius: BorderRadius.circular(30),
@@ -267,7 +269,7 @@ class _Start8PageState extends State<Start8Page> {
                                     'Tiếp theo',
                                     style: TextStyle(
                                       color: Colors.white, // Màu chữ
-                                      fontSize: 18,
+                                      fontSize: 18 * pix,
                                       fontFamily: 'BeVietnamPro',
                                     ),
                                   ),

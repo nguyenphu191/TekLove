@@ -45,7 +45,7 @@ class _TopChatBarState extends State<TopChatBar> {
     final size = MediaQuery.of(context).size;
     final pix = size.width / 393;
     return Container(
-      height: 80,
+      height: 80 * pix,
       width: size.width,
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 16),

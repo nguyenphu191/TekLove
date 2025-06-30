@@ -8,5 +8,6 @@ router.post('/reject/:loveId',LoveController.reject);
 router.post('/delete/:userId',LoveController.delete);
 router.post('/attend/:userId',LoveController.attend);
 router.get('/getLoveInfor/:userId',LoveController.getLoveInfor);
+router.get('/check-love/:userId/:candidateId', LoveController.checkLove);
 
 module.exports = router;

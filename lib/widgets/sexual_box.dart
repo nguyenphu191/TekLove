@@ -105,7 +105,7 @@ class _SexualBoxState extends State<SexualBox> {
           height: 15 * pix,
         ),
         Container(
-          height: 320 * pix,
+          height: 330 * pix,
           child: ListView(
             children: _options.keys.map((String option) {
               return CustomCheckbox(
@@ -142,10 +142,10 @@ class _SexualBoxState extends State<SexualBox> {
                   },
                 ),
               ),
-              SizedBox(width: 5),
+              SizedBox(width: 5 * pix),
               Text(
                 'Hiển thị khuynh hướng trên hồ sơ của bạn',
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 12 * pix, color: Colors.black),
               ),
             ],
           ),

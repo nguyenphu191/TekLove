@@ -140,6 +140,8 @@ class _SwipeCardState extends State<SwipeCard> {
     final size = MediaQuery.of(context).size;
     final pix = size.width / 393;
     return Container(
+      width: size.width,
+      height: size.height * 0.7,
       decoration: BoxDecoration(
         color: const Color(0xFF2E3236),
         border: Border.all(
@@ -154,13 +156,6 @@ class _SwipeCardState extends State<SwipeCard> {
             spreadRadius: 0,
             offset: const Offset(0, 8.0),
           ),
-          // BoxShadow(
-          //   color: const Color(0xff000000).withOpacity(0.6), // #00000099
-          //   blurRadius: 31.7,
-          //   spreadRadius: 0,
-          //   offset: const Offset(0, 0),
-          //   inset: true,
-          // ),
         ],
       ),
       child: Column(

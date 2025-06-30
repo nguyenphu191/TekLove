@@ -40,7 +40,7 @@ class _ChatPageState extends State<ChatPage> {
       }
       final myprofile = profileProvider.profile;
       final loveProvider = Provider.of<LoveProvider>(context, listen: false);
-      loveProvider.getLoveInfor(myprofile!.accountId, widget.candidate.id);
+      loveProvider.checkLove(myprofile!.accountId, widget.candidate.id);
       _fetchProfile();
     });
   }
@@ -66,7 +66,7 @@ class _ChatPageState extends State<ChatPage> {
     final profileProvider = Provider.of<ProfileProvider>(context);
     final profile = profileProvider.profile;
     final loveProvider = Provider.of<LoveProvider>(context);
-    final love = loveProvider.love;
+    final mess = loveProvider.message;
     return Consumer<MessageProvider>(
         builder: (context, messageProvider, child) {
       final messages = messageProvider.getMessages();
@@ -89,14 +89,15 @@ class _ChatPageState extends State<ChatPage> {
           body: Stack(
         children: [
           Positioned(
-            bottom: 72,
+            bottom: 72 * pix,
             left: 0,
             right: 0,
+            top: 80 * pix,
             child: SingleChildScrollView(
               child: Container(
-                height: size.height - 162 * pix,
+                height: double.maxFinite,
                 width: size.width,
-                decoration: (love != null && love.status == "success")
+                decoration: (mess == "love")
                     ? const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(AppImages.lovebackground),
@@ -130,7 +131,7 @@ class _ChatPageState extends State<ChatPage> {
                               Color backgroundColor;
                               Color textColor;
 
-                              if (love != null && love.status == "success") {
+                              if (mess == "love") {
                                 backgroundColor = AppColors.primary;
                                 textColor = Colors.white;
                               } else {
@@ -199,7 +200,7 @@ class _ChatPageState extends State<ChatPage> {
               top: 0,
               left: 0,
               right: 0,
-              child: (love != null && love.status == 'success')
+              child: (mess == "love")
                   ? TopChatBar(
                       candidate: widget.candidate,
                       isLove: true,
@@ -212,7 +213,7 @@ class _ChatPageState extends State<ChatPage> {
             top: 90 * pix,
             left: 26 * pix,
             right: 26 * pix,
-            child: (love != null && love.status == 'pending')
+            child: (mess == "sent" || mess == "received")
                 ? Container(
                     height: 100 * pix,
                     decoration: BoxDecoration(
@@ -225,7 +226,7 @@ class _ChatPageState extends State<ChatPage> {
                           height: 40 * pix,
                           width: size.width - 52 * pix,
                           padding: EdgeInsets.all(10 * pix),
-                          child: love.sender['accountId'] == profile?.accountId
+                          child: mess == "sent"
                               ? Text(
                                   "Bạn đã gửi yêu cầu hẹn hò",
                                   style: TextStyle(

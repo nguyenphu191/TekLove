@@ -78,7 +78,7 @@ class _Start12PageState extends State<Start12Page> {
           ),
           // Logo Positioned
           Positioned(
-            top: 82 * pix,
+            top: 70 * pix,
             left: 79 * pix,
             child: Container(
               height: 53 * pix,
@@ -92,7 +92,7 @@ class _Start12PageState extends State<Start12Page> {
           ),
           // Main Content
           Positioned(
-            top: 175 * pix,
+            top: 165 * pix,
             left: 8 * pix,
             right: 8 * pix,
             bottom: 15 * pix,
@@ -105,14 +105,18 @@ class _Start12PageState extends State<Start12Page> {
                 child: Column(
                   children: [
                     Container(
-                      height: 490 * pix,
+                      height: 480 * pix,
                       width: double.maxFinite,
-                      margin: EdgeInsets.all(18 * pix),
+                      margin: EdgeInsets.only(
+                        top: 16 * pix,
+                        left: 32 * pix,
+                        right: 32 * pix,
+                      ),
                       child: Column(
                         children: [
                           // Progress Indicator
                           Container(
-                            height: 16 * pix,
+                            height: 20 * pix,
                             width: double.maxFinite,
                             child: Text(
                               '12/12',
@@ -127,7 +131,7 @@ class _Start12PageState extends State<Start12Page> {
                           SizedBox(height: 15 * pix),
                           // Title
                           Container(
-                            height: 32 * pix,
+                            height: 42 * pix,
                             width: double.maxFinite,
                             child: Text(
                               'Thêm ảnh của bạn',
